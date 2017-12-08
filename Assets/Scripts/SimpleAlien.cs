@@ -10,11 +10,8 @@ namespace Assets.Scripts
         public int speed { get; set; }
 
         // Use this for initialization
-        void Start ()
-        {
-            healthLeft = 100;
-            accuracy = 10;
-            speed = 5;
+        void Start () {
+		
         }
 	
         // Update is called once per frame
