@@ -28,7 +28,7 @@ namespace Assets.Scripts
             maxValue = 100;
             maxHealth = 100;
             maxAmmo = 100;
-            maxSpeed = 1000f; //TODO: sprawdzic czy wartosc jest ok
+            maxSpeed = 30f; //TODO: sprawdzic czy wartosc jest ok
 
             Adrenalin = maxValue / 2;
             Endorfines = maxValue / 2;
@@ -39,17 +39,18 @@ namespace Assets.Scripts
             Speed = maxSpeed / 2;
 
             Accuracy = 1;
+
+            CosmoRigidbody = GetComponent<Rigidbody2D>();
         }
-	
-        // Update is called once per frame
-        void FixedUpdate ()
-        {
+
+        void FixedUpdate() {
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
 
-            Vector2 movement = new Vector2(moveHorizontal,moveVertical);
+            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
-            CosmoRigidbody.AddForce(movement * Speed);
+            if(Speed < maxSpeed)
+                CosmoRigidbody.AddForce(movement * Speed);
         }
     }
 }
