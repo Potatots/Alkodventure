@@ -28,7 +28,7 @@ namespace Assets.Scripts
             maxValue = 100;
             maxHealth = 100;
             maxAmmo = 100;
-            maxSpeed = 10f; //TODO: sprawdzic czy wartosc jest ok
+            maxSpeed = 1000f; //TODO: sprawdzic czy wartosc jest ok
 
             Adrenalin = maxValue / 2;
             Endorfines = maxValue / 2;
@@ -45,7 +45,7 @@ namespace Assets.Scripts
         void FixedUpdate ()
         {
             float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertival");
+            float moveVertical = Input.GetAxis("Vertical");
 
             Vector2 movement = new Vector2(moveHorizontal,moveVertical);
 
