@@ -14,12 +14,13 @@ public interface ICosmonaut {
     int AmmoLeft { get; set; }
     int HealthLeft { get; set; }
 
-    float Speed { get; set; }
+    float MovementSpeed { get; set; }
+    float RotationSpeed { get; set; }
 
-    float maxSpeed { get; set; }
-    int maxValue { get; set; } //max Value of adrenalin/endorfines/alcohol
-    int maxHealth { get; set; }
-    int maxAmmo { get; set; }
+    float MaxSpeed { get; set; }
+    int MaxValue { get; set; } //max Value of adrenalin/endorfines/alcohol
+    int MaxHealth { get; set; }
+    int MaxAmmo { get; set; }
 
     Rigidbody2D CosmoRigidbody { get; set; }
 }
