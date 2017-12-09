@@ -11,7 +11,7 @@ namespace Assets.Scripts.Cosmonaut {
         private int happiness;
         private int alcohol;
         private int ammoLeft;
-        private int healthLeft;
+        public int healthLeft;
 
         public int Adrenalin {
             get { return adrenalin; }

@@ -22,7 +22,6 @@ GameObject:
   - component: {fileID: 114057945741424992}
   - component: {fileID: 114131386164265732}
   - component: {fileID: 50699849768712474}
-  - component: {fileID: 58877795856759738}
   - component: {fileID: 58093191747071406}
   - component: {fileID: 61087604577731310}
   m_Layer: 0
@@ -41,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4742817595541454}
   - component: {fileID: 212887625029726888}
+  - component: {fileID: 61196577298986170}
   m_Layer: 0
   m_Name: cosmonaut
   m_TagString: Untagged
@@ -140,21 +140,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 8
---- !u!58 &58877795856759738
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1057788073033038}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!61 &61087604577731310
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -179,6 +164,31 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9492221}
+  m_EdgeRadius: 0
+--- !u!61 &61196577298986170
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1400396139596894}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 5}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 5}
   m_EdgeRadius: 0
 --- !u!108 &108378698507593752
 Light:
@@ -227,6 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac426736a512cec44979fdf656a14386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthLeft: 0
 --- !u!114 &114131386164265732
 MonoBehaviour:
   m_ObjectHideFlags: 1
