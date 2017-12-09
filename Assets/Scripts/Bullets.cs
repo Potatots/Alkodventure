@@ -7,9 +7,9 @@ public class Bullets : MonoBehaviour
     private int bulletSpeed = 75;
     public int bulletForce = 10;
 
-    void OnTriggerEnter(Collider collider)
+    void OnTriggerEnter2D(Collider2D collider)
     {
-        
+
     }
     // Use this for initialization
     void Start () {

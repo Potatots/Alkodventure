@@ -9,11 +9,14 @@ namespace Assets.Scripts.Aliens
         public int accuracy { get; set; }
         public int speed { get; set; }
 
-        public void OnTriggerEnter(Collider collider)
+        public void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.tag == "bullet")
             {
                 healthLeft -= collider.gameObject.GetComponent<Bullets>().bulletForce;
+                if(healthLeft <=0)
+                    Destroy(gameObject);
+                Destroy(collider.gameObject);
             }
         }
 
@@ -27,7 +30,6 @@ namespace Assets.Scripts.Aliens
 	
         // Update is called once per frame
         void Update () {
-		    Debug.Log(healthLeft);
         }
     }
 }

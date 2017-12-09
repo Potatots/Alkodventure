@@ -8,6 +8,6 @@ namespace Assets.Scripts.Interfaces
         int accuracy { get; set; }
         int speed { get; set; }
 
-        void OnTriggerEnter(Collider collider);
+        void OnTriggerEnter2D(Collider2D collider);
     }
 }

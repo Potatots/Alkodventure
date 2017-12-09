@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 114992044238657970}
   - component: {fileID: 50758245095893964}
   m_Layer: 0
-  m_Name: Cosmonaut
+  m_Name: cosmonaut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,9 +118,9 @@ MonoBehaviour:
   Damage: 0
   TimeToFire: 0
   FirePoint: {fileID: 0}
-  cosmo: {fileID: 114077416711943746}
   bulletPrefab: {fileID: 4188134431181706, guid: 11a85761a61314b4e9265a6f549da3ce,
     type: 2}
+  cosmo: {fileID: 114077416711943746}
 --- !u!212 &212034584073911036
 SpriteRenderer:
   m_ObjectHideFlags: 1
