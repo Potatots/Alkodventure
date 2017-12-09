@@ -14,13 +14,15 @@ namespace Assets.Scripts.Aliens {
         public Transform Target { get; set; }
 
         public void OnTriggerEnter2D(Collider2D collider) {
+
             if(collider.tag == "bullet") {
+                Destroy(collider.gameObject);
+
                 HealthLeft -= collider.gameObject.GetComponent<Bullets>().bulletForce;
                 if(HealthLeft <= 0) {
                     Destroy(gameObject);
                     GameObject.FindWithTag("player").GetComponent<Cosmonaut.Cosmonaut>().Adrenalin++;
                 }
-                Destroy(collider.gameObject);
             }
             if(collider.tag == "player") {
                 WasPlayerDetected = true;

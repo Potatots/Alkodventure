@@ -102,6 +102,7 @@ namespace Assets.Scripts.Cosmonaut {
             movePlayer();
             rotareToMouse();
             setLight();
+            Happiness -= (int)(Happiness * Time.deltaTime);
         }
 
         private void setLight()
