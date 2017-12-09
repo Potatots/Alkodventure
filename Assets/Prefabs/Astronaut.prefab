@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4881526452500444}
   - component: {fileID: 212698104387647864}
+  - component: {fileID: 61667244628109536}
   m_Layer: 0
   m_Name: cosmonaut
   m_TagString: Untagged
@@ -57,7 +58,7 @@ GameObject:
   - component: {fileID: 58592160915478528}
   - component: {fileID: 61308075590480306}
   m_Layer: 0
-  m_Name: Cosmonaut
+  m_Name: Astronaut
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -147,11 +148,25 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_Offset: {x: 0, y: 0.00000011920929}
   serializedVersion: 2
   m_Size: {x: 1, y: 0.60536504}
+--- !u!61 &61667244628109536
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1211306866527946}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Size: {x: 3.0000007, y: 5.000001}
 --- !u!108 &108270948705800910
 Light:
   m_ObjectHideFlags: 1
@@ -197,6 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac426736a512cec44979fdf656a14386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthLeft: 0
 --- !u!114 &114831066430398078
 MonoBehaviour:
   m_ObjectHideFlags: 1

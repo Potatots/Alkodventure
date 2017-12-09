@@ -6,7 +6,7 @@ namespace Assets.Scripts.Interfaces
     {
         int HealthLeft { get; set; }
         int Accuracy { get; set; }
-        int MovementSpeed { get; set; }
+        float MovementSpeed { get; set; }
         int RotationSpeed { get; set; }
         int AlienForce { get; set; }
 

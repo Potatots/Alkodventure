@@ -19,6 +19,5 @@ public class UIManager : MonoBehaviour {
 	
 
 	void Update () {
-		Debug.Log(a);
 	}
 }

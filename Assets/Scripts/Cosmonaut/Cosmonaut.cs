@@ -63,8 +63,9 @@ namespace Assets.Scripts.Cosmonaut {
                 Happiness += alc;
 
                 Destroy(collider.gameObject);
+
             }
-            Debug.Log(collider);
+            Debug.Log(collider.tag);
         }
 
         void Start() {
@@ -98,17 +99,17 @@ namespace Assets.Scripts.Cosmonaut {
             MoveHorizontal = Input.GetAxis("Horizontal");
             MoveVertical = Input.GetAxis("Vertical");
 
-            if (alcohol != 0)
-            {
-                if (Input.GetAxis("Horizontal") != 0)
-                {
-                    MoveVertical = Mathf.Sin(Time.time * (alcohol / 50)) * 1/2;
-                }
-                if (Input.GetAxis("Vertical") != 0)
-                {
-                    MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 50)) * 1/2;
-                }
-            }
+            //if (alcohol != 0)
+            //{
+            //    if (Input.GetAxis("Horizontal") != 0)
+            //    {
+            //        MoveVertical = Mathf.Sin(Time.time * (alcohol / 50)) * 1/2;
+            //    }
+            //    if (Input.GetAxis("Vertical") != 0)
+            //    {
+            //        MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 50)) * 1/2;
+            //    }
+            //}
 
             Movement = new Vector2(MoveHorizontal, MoveVertical);
 

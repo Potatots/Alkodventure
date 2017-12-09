@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50699849768712474}
   - component: {fileID: 58877795856759738}
   m_Layer: 0
-  m_Name: Cosmonaut
+  m_Name: cosmonaut
   m_TagString: player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac426736a512cec44979fdf656a14386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthLeft: 0
 --- !u!114 &114131386164265732
 MonoBehaviour:
   m_ObjectHideFlags: 1

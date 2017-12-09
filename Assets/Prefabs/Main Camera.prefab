@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114404701062331058}
   - component: {fileID: 114936301198966464}
   - component: {fileID: 114881622125592904}
+  - component: {fileID: 114574585860916816}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -40,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777382654981336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 11.991394, z: -1}
+  m_LocalPosition: {x: 3, y: 3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -105,6 +106,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a7228baa975de45ad0648c5afa163d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AlcoholStrength: 0
+--- !u!114 &114574585860916816
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1777382654981336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9d0fd54478ff8449b7b40d40d9d95d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114881622125592904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,15 +141,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6b6974cd03a37f43aa33c804da009c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 1432375174545734, guid: 22929cf58ebb460478a263cc10ac2ae9, type: 2}
+  wall: {fileID: 1902763267524486, guid: 63056d43900f5eb44b2c3aa783ed0077, type: 2}
+  bottle: {fileID: 1220138383598114, guid: 1abb0523746192b499b294babe825adb, type: 2}
+  aliensList:
+  - {fileID: 1202275803430178, guid: e2cc83257d22ee94eabb4b07bac5f237, type: 2}
+  - {fileID: 1636347519881726, guid: ed6eaa6355591f14c9747266f932a7a9, type: 2}
   floors:
-  - {fileID: 1441397789078340, guid: 6cc716bc4ad1a804a9424ece38d70c68, type: 2}
-  - {fileID: 1409469925266064, guid: eb0d62022a4f9854983fc7d5f3855aeb, type: 2}
-  - {fileID: 1497392166962378, guid: b70c8a7ab3112bf47b1ebfb929602382, type: 2}
-  - {fileID: 1214980964974304, guid: 9f1c4db233a4b0047bc1b369ea9f90f1, type: 2}
-  width: 10
-  height: 10
-  tileSize: 5
+  - {fileID: 1196361250376422, guid: c267451577966244bbc8171dd5c1b62d, type: 2}
+  - {fileID: 1973477259303464, guid: d34c30930517b474584a72aa93b076c6, type: 2}
+  - {fileID: 1840203118805374, guid: bef7b05f0434c3945b8dbedfd9b223c9, type: 2}
+  - {fileID: 1902763267524486, guid: 63056d43900f5eb44b2c3aa783ed0077, type: 2}
+  width: 50
+  height: 50
+  bottleFactor: 7
 --- !u!124 &124270250680860122
 Behaviour:
   m_ObjectHideFlags: 1

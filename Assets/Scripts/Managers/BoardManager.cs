@@ -35,7 +35,7 @@ namespace Assets.Scripts
             {
                 int x = Random.Range(1, width - 1);
                 int y = Random.Range(1, height - 1);
-                Instantiate(aliensList[Random.Range(0,aliensList.Length-1)], new Vector3(x * tileSize, y * tileSize,0), Quaternion.identity);
+                Instantiate(aliensList[Random.Range(0,aliensList.Length)], new Vector3(x * tileSize, y * tileSize,0), Quaternion.identity);
                 isObstacle[(int)x, (int)y] = false;
             }
         }

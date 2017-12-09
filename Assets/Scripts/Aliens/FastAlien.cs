@@ -1,10 +1,8 @@
 ﻿using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Assets.Scripts.Aliens
-{
-    public class SimpleAlien : MonoBehaviour, IAlien 
-    {
+namespace Assets.Scripts.Aliens {
+    public class FastAlien : MonoBehaviour, IAlien {
         public int HealthLeft { get; set; }
         public int Accuracy { get; set; }
         public float MovementSpeed { get; set; }
@@ -15,26 +13,21 @@ namespace Assets.Scripts.Aliens
 
         public Transform Target { get; set; }
 
-        public void OnTriggerEnter2D(Collider2D collider)
-        {
-            if (collider.tag == "bullet")
-            {
+        public void OnTriggerEnter2D(Collider2D collider) {
+            if(collider.tag == "bullet") {
                 HealthLeft -= collider.gameObject.GetComponent<Bullets>().bulletForce;
-                if (HealthLeft <= 0)
-                {
+                if(HealthLeft <= 0) {
                     Destroy(gameObject);
                     GameObject.FindWithTag("player").GetComponent<Cosmonaut.Cosmonaut>().Adrenalin++;
                 }
                 Destroy(collider.gameObject);
             }
-            if (collider.tag == "player")
-            {
+            if(collider.tag == "player") {
                 WasPlayerDetected = true;
             }
         }
 
-        void Start ()
-        {
+        void Start() {
             HealthLeft = 100;
             Accuracy = 10;
             MovementSpeed = 1;
@@ -45,8 +38,7 @@ namespace Assets.Scripts.Aliens
             Target = GameObject.FindWithTag("player").transform;
         }
 
-        private void moveToPlayer()
-        {
+        private void moveToPlayer() {
             Vector2 direction = Target.position - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -58,10 +50,9 @@ namespace Assets.Scripts.Aliens
             transform.position =
                 Vector2.MoveTowards(transform.position, Target.position, MovementSpeed * Time.deltaTime);
         }
-	
-        void Update () {
-            if (WasPlayerDetected)
-            {
+
+        void Update() {
+            if(WasPlayerDetected) {
                 moveToPlayer();
             }
         }

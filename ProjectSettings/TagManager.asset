@@ -9,6 +9,7 @@ TagManager:
   - player
   - simpleAlien
   - alien
+  - fastAlien
   layers:
   - Default
   - TransparentFX
