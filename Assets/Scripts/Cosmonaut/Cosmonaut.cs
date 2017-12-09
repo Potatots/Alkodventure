@@ -51,21 +51,39 @@ namespace Assets.Scripts.Cosmonaut {
         public Vector2 Movement { get; set; }
 
         public void OnTriggerEnter2D(Collider2D collider) {
-            if(collider.tag == "simpleAlien" && gameObject.GetComponent<BoxCollider2D>().IsTouching(collider)) {
-                HealthLeft -= collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
-                Happiness -= collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
+
+            if(collider.tag == "simpleAlien")
+            {
+                HealthLeft -= 10;//collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
+                Happiness -= 10;//collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
                 Debug.Log(HealthLeft);
             }
-            if(collider.tag == "alcohol" && gameObject.GetComponent<BoxCollider2D>().IsTouching(collider)) {
+            if(collider.tag == "fastAlien" && GetComponent<BoxCollider2D>().IsTouching(collider))
+            {
+                HealthLeft -= 3;//collider.gameObject.GetComponent<FastAlien>().AlienForce;
+                Happiness -= 3;//collider.gameObject.GetComponent<FastAlien>().AlienForce;
+                Debug.Log(HealthLeft);
+            }
+            if(collider.tag == "strongAlien" && GetComponent<BoxCollider2D>().IsTouching(collider))
+            {
+                HealthLeft -= 15;//collider.gameObject.GetComponent<StrongAlien>().AlienForce;
+                Happiness -= 15;//collider.gameObject.GetComponent<StrongAlien>().AlienForce;
+                Debug.Log(HealthLeft);
+            }
+            if(collider.tag == "fancyAlien" && GetComponent<BoxCollider2D>().IsTouching(collider))
+            {
+                HealthLeft -= 7;//collider.gameObject.GetComponent<FancyAlien>().AlienForce;
+                Happiness -= 7;//collider.gameObject.GetComponent<FancyAlien>().AlienForce;
+                Debug.Log(HealthLeft);
+            }
+            if(collider.tag == "alcohol" && GetComponent<BoxCollider2D>().IsTouching(collider)) {
                 int alc = Random.Range(5, 15);
 
                 Alcohol += alc;
                 Happiness += alc;
 
                 Destroy(collider.gameObject);
-
             }
-            Debug.Log(collider.tag);
         }
 
         void Start() {
@@ -89,8 +107,8 @@ namespace Assets.Scripts.Cosmonaut {
         private void setLight()
         {
             Light temp = gameObject.GetComponentInChildren<Light>();
-            temp.spotAngle = Happiness / 7 + 11;
-            temp.intensity = Adrenalin/25;
+            temp.spotAngle = Happiness / 7 + 15;
+            temp.intensity = Adrenalin/25+2;
             //temp.color = new Color(150, 150, 150);
             //Debug.Log((healthLeft) * 3 / 2);
             //Debug.Log(StandardLightColor.r + " " + (StandardLightColor.g - (MaxHealth - healthLeft) * 3 / 2) + " " + (StandardLightColor.b - (MaxHealth - healthLeft) * 3 / 2) +" " + StandardLightColor.a);
@@ -99,17 +117,23 @@ namespace Assets.Scripts.Cosmonaut {
             MoveHorizontal = Input.GetAxis("Horizontal");
             MoveVertical = Input.GetAxis("Vertical");
 
-            //if (alcohol != 0)
-            //{
-            //    if (Input.GetAxis("Horizontal") != 0)
-            //    {
-            //        MoveVertical = Mathf.Sin(Time.time * (alcohol / 50)) * 1/2;
-            //    }
-            //    if (Input.GetAxis("Vertical") != 0)
-            //    {
-            //        MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 50)) * 1/2;
-            //    }
-            //}
+            if(alcohol != 0) {
+                if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
+                {
+
+                }
+                else
+                {
+                    if (Input.GetAxis("Horizontal") != 0)
+                    {
+                        MoveVertical = Mathf.Sin(Time.time * (alcohol / 25));
+                    }
+                    if (Input.GetAxis("Vertical") != 0)
+                    {
+                        MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 25));
+                    }
+                }
+            }
 
             Movement = new Vector2(MoveHorizontal, MoveVertical);
 

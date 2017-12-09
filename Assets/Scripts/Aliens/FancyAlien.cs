@@ -28,11 +28,11 @@ namespace Assets.Scripts.Aliens {
         }
 
         void Start() {
-            HealthLeft = 100;
+            HealthLeft = 80;
             Accuracy = 10;
-            MovementSpeed = 1;
+            MovementSpeed = 1.5f;
             RotationSpeed = 1;
-            AlienForce = 5;
+            AlienForce = 20;
             WasPlayerDetected = false;
 
             Target = GameObject.FindWithTag("player").transform;
