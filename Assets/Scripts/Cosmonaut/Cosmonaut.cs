@@ -90,7 +90,7 @@ namespace Assets.Scripts.Cosmonaut {
             Light temp = gameObject.GetComponentInChildren<Light>();
             temp.spotAngle = Happiness / 7 + 11;
             temp.intensity = Adrenalin/25;
-            //temp.color = new Color(150, (healthLeft) * 3 / 2, (healthLeft) * 3 / 2);
+            //temp.color = new Color(150, 150, 150);
             //Debug.Log((healthLeft) * 3 / 2);
             //Debug.Log(StandardLightColor.r + " " + (StandardLightColor.g - (MaxHealth - healthLeft) * 3 / 2) + " " + (StandardLightColor.b - (MaxHealth - healthLeft) * 3 / 2) +" " + StandardLightColor.a);
         }
@@ -102,11 +102,11 @@ namespace Assets.Scripts.Cosmonaut {
             {
                 if (Input.GetAxis("Horizontal") != 0)
                 {
-                    MoveVertical = Mathf.Sin(Time.time * (alcohol / 50));
+                    MoveVertical = Mathf.Sin(Time.time * (alcohol / 50)) * 1/2;
                 }
                 if (Input.GetAxis("Vertical") != 0)
                 {
-                    MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 50));
+                    MoveHorizontal = Mathf.Cos(Time.time * (alcohol / 50)) * 1/2;
                 }
             }
 

@@ -5,10 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - bullet
-  - alien
+  - alcohol
   - player
   - simpleAlien
-  - alcohol
+  - alien
   layers:
   - Default
   - TransparentFX
