@@ -23,6 +23,8 @@ namespace Assets.Scripts.Interfaces
         float MoveVertical { get; set; }
         float MoveHorizontal { get; set; }
 
+        Color StandardLightColor { get; set; }
+
         Rigidbody2D CosmoRigidbody { get; set; }
         Transform CosmoTransform { get; set; }
         Vector2 Movement { get; set; }

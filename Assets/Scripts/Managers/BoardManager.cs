@@ -10,12 +10,9 @@ namespace Assets.Scripts
 		public GameObject[] floors;
 		public  int width = 10;
 		public  int height = 10;
-		private  int tileSize = 5;
+		private  float tileSize = 2.58f;
 		public 	int  bottleFactor = 10;
 		private int bottleFrequency;
-
-	
-
 	
 		void Awake() {
 
