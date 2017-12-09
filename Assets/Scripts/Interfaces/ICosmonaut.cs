@@ -6,10 +6,8 @@ namespace Assets.Scripts.Interfaces
         string CosmonautName { get; set; }
 
         int Adrenalin { get; set; }
-        int Endorfines { get; set; }
+        int Happiness { get; set; }
         int Alcohol { get; set; }
-
-        int Accuracy { get; set; }
 
         int AmmoLeft { get; set; }
         int HealthLeft { get; set; }
@@ -28,5 +26,7 @@ namespace Assets.Scripts.Interfaces
         Rigidbody2D CosmoRigidbody { get; set; }
         Transform CosmoTransform { get; set; }
         Vector2 Movement { get; set; }
+
+        void OnTriggerEnter2D(Collider2D collider);
     }
 }

@@ -8,6 +8,8 @@ namespace Assets.Scripts
 
         private BoardManager boardScript;
 
+        public int AlcoholStrength;
+
         void Awake()
         {
             if (instance == null)

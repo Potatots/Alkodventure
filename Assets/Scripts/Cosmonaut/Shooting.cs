@@ -22,7 +22,7 @@ namespace Assets.Scripts.Cosmonaut
         void Update () {
             if (FireRate == 0f)
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && cosmo.AmmoLeft > 0)
                 {
                     shoot();
                 }
@@ -40,17 +40,19 @@ namespace Assets.Scripts.Cosmonaut
 
         private void shoot()
         {
-            Vector2 mousePosition = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+            float minRange = -cosmo.Alcohol + cosmo.Adrenalin / 2;
+            float maxRange = cosmo.Alcohol - cosmo.Adrenalin / 2;
+            Vector2 target = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x + Random.Range(minRange, maxRange), Input.mousePosition.y + Random.Range(minRange, maxRange)));
+            Vector2 currentPos = new Vector2(transform.position.x,transform.position.y);
 
-            createBullet();
+            Vector2 direction = target - currentPos;
+            direction.Normalize();
 
-            Vector2 firePP = new Vector2(FirePoint.position.x, FirePoint.position.y);
-            RaycastHit2D hit = Physics2D.Raycast(firePP, mousePosition, 100);
-        }
+            Quaternion rotation = Quaternion.Euler(0,0,Mathf.Atan2(direction.y,direction.x)*Mathf.Rad2Deg);
 
-        private void createBullet()
-        {
-            Instantiate(bulletPrefab, FirePoint.position, FirePoint.rotation);
+            Instantiate(bulletPrefab, currentPos, rotation);
+
+            cosmo.AmmoLeft--;
         }
     }
 }

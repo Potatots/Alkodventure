@@ -7,6 +7,8 @@ TagManager:
   - bullet
   - alien
   - player
+  - simpleAlien
+  - alcohol
   layers:
   - Default
   - TransparentFX

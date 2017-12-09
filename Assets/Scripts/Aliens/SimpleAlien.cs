@@ -5,31 +5,65 @@ namespace Assets.Scripts.Aliens
 {
     public class SimpleAlien : MonoBehaviour, IAlien 
     {
-        public int healthLeft { get; set; }
-        public int accuracy { get; set; }
-        public int speed { get; set; }
+        public int HealthLeft { get; set; }
+        public int Accuracy { get; set; }
+        public int MovementSpeed { get; set; }
+        public int RotationSpeed { get; set; }
+        public int AlienForce { get; set; }
+
+        public bool WasPlayerDetected { get; set; }
+
+        public Transform Target { get; set; }
 
         public void OnTriggerEnter2D(Collider2D collider)
         {
             if (collider.tag == "bullet")
             {
-                healthLeft -= collider.gameObject.GetComponent<Bullets>().bulletForce;
-                if(healthLeft <=0)
+                HealthLeft -= collider.gameObject.GetComponent<Bullets>().bulletForce;
+                if (HealthLeft <= 0)
+                {
                     Destroy(gameObject);
+                    GameObject.FindWithTag("player").GetComponent<Cosmonaut.Cosmonaut>().Adrenalin++;
+                }
                 Destroy(collider.gameObject);
+            }
+            if (collider.tag == "player")
+            {
+                WasPlayerDetected = true;
             }
         }
 
-        // Use this for initialization
         void Start ()
         {
-            healthLeft = 100;
-            accuracy = 10;
-            speed = 5;
+            HealthLeft = 100;
+            Accuracy = 10;
+            MovementSpeed = 1;
+            RotationSpeed = 1;
+            AlienForce = 5;
+            WasPlayerDetected = false;
+
+            Target = GameObject.FindWithTag("player").transform;
+        }
+
+        private void moveToPlayer()
+        {
+            Vector2 direction = Target.position - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            rotation = Quaternion.Slerp(transform.rotation, rotation, RotationSpeed * Time.deltaTime);
+
+            transform.rotation = rotation;
+
+            transform.position =
+                Vector2.MoveTowards(transform.position, Target.position, MovementSpeed * Time.deltaTime);
         }
 	
-        // Update is called once per frame
         void Update () {
+            if (WasPlayerDetected)
+            {
+                moveToPlayer();
+            }
         }
     }
 }

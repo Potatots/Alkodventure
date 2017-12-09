@@ -1,19 +1,37 @@
-﻿using Assets.Scripts.Interfaces;
+﻿using Assets.Scripts.Aliens;
+using Assets.Scripts.Interfaces;
 using UnityEngine;
 
-namespace Assets.Scripts.Cosmonaut
-{
+namespace Assets.Scripts.Cosmonaut {
     public class Cosmonaut : MonoBehaviour, ICosmonaut {
         public string CosmonautName { get; set; }
 
-        public int Adrenalin { get; set; }
-        public int Endorfines { get; set; }
-        public int Alcohol { get; set; }
+        private int adrenalin;
+        private int happiness;
+        private int alcohol;
+        private int ammoLeft;
+        private int healthLeft;
 
-        public int AmmoLeft { get; set; }
-        public int HealthLeft { get; set; }
-
-        public int Accuracy { get; set; }
+        public int Adrenalin {
+            get { return adrenalin; }
+            set { adrenalin = value < MaxValue ? value : MaxValue; }
+        }
+        public int Happiness {
+            get { return happiness; }
+            set { happiness = value < MaxValue ? value : MaxValue; }
+        }
+        public int Alcohol {
+            get { return alcohol; }
+            set { alcohol = value < MaxValue ? value : MaxValue; }
+        }
+        public int AmmoLeft {
+            get { return ammoLeft; }
+            set { ammoLeft = value < MaxValue ? value : MaxAmmo; }
+        }
+        public int HealthLeft {
+            get { return healthLeft; }
+            set { healthLeft = value < MaxValue ? value : MaxHealth; }
+        }
 
         public float MovementSpeed { get; set; }
         public float RotationSpeed { get; set; }
@@ -30,31 +48,56 @@ namespace Assets.Scripts.Cosmonaut
         public Transform CosmoTransform { get; set; }
         public Vector2 Movement { get; set; }
 
-        void Start ()
-        {
+        public void OnTriggerEnter2D(Collider2D collider) {
+            if(collider.tag == "simpleAlien" && gameObject.GetComponent<BoxCollider2D>().IsTouching(collider)) {
+                HealthLeft -= collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
+                Happiness -= collider.gameObject.GetComponent<SimpleAlien>().AlienForce;
+                Debug.Log(HealthLeft);
+            }
+            if(collider.tag == "alcohol" && gameObject.GetComponent<BoxCollider2D>().IsTouching(collider)) {
+                int alc = Random.Range(5, 15);
+
+                Alcohol += alc;
+                Happiness += alc;
+
+                Destroy(collider.gameObject);
+            }
+            Debug.Log(collider);
+        }
+
+        void Start() {
             setVariables();
 
             CosmoRigidbody = GetComponent<Rigidbody2D>();
             CosmoTransform = GetComponent<Transform>();
 
             CosmoTransform.position =
-                new Vector3(Camera.main.transform.position.x/2, Camera.main.transform.position.y/2, 0);
+                new Vector3(Camera.main.transform.position.x / 2, Camera.main.transform.position.y / 2, 0);
         }
 
         void FixedUpdate() {
+            movePlayer();
+            rotareToMouse();
+        }
+
+        private void movePlayer() {
             MoveHorizontal = Input.GetAxis("Horizontal");
             MoveVertical = Input.GetAxis("Vertical");
+
+            if(Input.GetAxis("Horizontal") != 0) {
+                MoveVertical = Mathf.Sin(Time.time * (alcohol / 50));
+            }
+            if(Input.GetAxis("Vertical") != 0) {
+                MoveHorizontal = Mathf.Sin(Time.time * (alcohol / 50));
+            }
 
             Movement = new Vector2(MoveHorizontal, MoveVertical);
 
             if(MovementSpeed < MaxSpeed)
                 CosmoRigidbody.AddForce(Movement * MovementSpeed);
-
-            rotareToMouse();
         }
 
-        private void rotareToMouse()
-        {
+        private void rotareToMouse() {
             Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
@@ -67,10 +110,10 @@ namespace Assets.Scripts.Cosmonaut
             MaxValue = 100;
             MaxHealth = 100;
             MaxAmmo = 100;
-            MaxSpeed = 50f; //TODO: sprawdzic czy wartosc jest ok
+            MaxSpeed = 50f;
 
             Adrenalin = MaxValue / 2;
-            Endorfines = MaxValue / 2;
+            Happiness = MaxValue / 2;
             Alcohol = MaxValue / 2;
 
             AmmoLeft = MaxAmmo / 2;
@@ -78,8 +121,6 @@ namespace Assets.Scripts.Cosmonaut
 
             MovementSpeed = MaxSpeed / 2;
             RotationSpeed = 10f;
-
-            Accuracy = 1;
         }
     }
 }

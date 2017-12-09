@@ -4,9 +4,15 @@ namespace Assets.Scripts.Interfaces
 {
     public interface IAlien
     {
-        int healthLeft { get; set; }
-        int accuracy { get; set; }
-        int speed { get; set; }
+        int HealthLeft { get; set; }
+        int Accuracy { get; set; }
+        int MovementSpeed { get; set; }
+        int RotationSpeed { get; set; }
+        int AlienForce { get; set; }
+
+        bool WasPlayerDetected { get; set; }
+
+        Transform Target { get; set; }
 
         void OnTriggerEnter2D(Collider2D collider);
     }

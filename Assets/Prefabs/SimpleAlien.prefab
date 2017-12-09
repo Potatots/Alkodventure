@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 50944393449245104}
   m_Layer: 0
   m_Name: SimpleAlien
-  m_TagString: Untagged
+  m_TagString: simpleAlien
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
