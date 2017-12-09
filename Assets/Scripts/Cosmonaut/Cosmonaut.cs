@@ -36,6 +36,9 @@ namespace Assets.Scripts.Cosmonaut
 
             CosmoRigidbody = GetComponent<Rigidbody2D>();
             CosmoTransform = GetComponent<Transform>();
+
+            CosmoTransform.position =
+                new Vector3(Camera.main.transform.position.x/2, Camera.main.transform.position.y/2, 0);
         }
 
         void FixedUpdate() {
