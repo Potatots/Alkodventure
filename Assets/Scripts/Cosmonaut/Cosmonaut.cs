@@ -132,7 +132,7 @@ namespace Assets.Scripts.Cosmonaut {
 
             Adrenalin = MaxValue / 2;
             Happiness = MaxValue / 2;
-            Alcohol = 0;
+            Alcohol = MaxValue/2;
 
             AmmoLeft = MaxAmmo / 2;
             HealthLeft = MaxHealth;
