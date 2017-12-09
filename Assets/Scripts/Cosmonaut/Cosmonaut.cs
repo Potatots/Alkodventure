@@ -120,7 +120,7 @@ namespace Assets.Scripts.Cosmonaut {
             if(alcohol != 0) {
                 if (Input.GetAxis("Horizontal") != 0 && Input.GetAxis("Vertical") != 0)
                 {
-
+                    MoveVertical = MoveVertical = Mathf.Sin(Time.time * (alcohol / 25));
                 }
                 else
                 {
