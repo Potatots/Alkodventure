@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Interfaces;
+using UnityEngine;
 
-namespace Assets.Scripts
+namespace Assets.Scripts.Cosmonaut
 {
     public class Cosmonaut : MonoBehaviour, ICosmonaut {
         public string CosmonautName { get; set; }
@@ -22,12 +23,44 @@ namespace Assets.Scripts
         public float MaxSpeed { get; set; }
         public int MaxAmmo { get; set; }
 
+        public float MoveVertical { get; set; }
+        public float MoveHorizontal { get; set; }
+
         public Rigidbody2D CosmoRigidbody { get; set; }
+        public Transform CosmoTransform { get; set; }
+        public Vector2 Movement { get; set; }
 
-        public Transform cosmoTransform { get; set; }
-
-        private void setVariables()
+        void Start ()
         {
+            setVariables();
+
+            CosmoRigidbody = GetComponent<Rigidbody2D>();
+            CosmoTransform = GetComponent<Transform>();
+        }
+
+        void FixedUpdate() {
+            MoveHorizontal = Input.GetAxis("Horizontal");
+            MoveVertical = Input.GetAxis("Vertical");
+
+            Movement = new Vector2(MoveHorizontal, MoveVertical);
+
+            if(MovementSpeed < MaxSpeed)
+                CosmoRigidbody.AddForce(Movement * MovementSpeed);
+
+            rotareToMouse();
+        }
+
+        private void rotareToMouse()
+        {
+            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+            rotation = Quaternion.Slerp(transform.rotation, rotation, RotationSpeed * Time.deltaTime);
+
+            transform.rotation = rotation;
+        }
+        private void setVariables() {
             MaxValue = 100;
             MaxHealth = 100;
             MaxAmmo = 100;
@@ -44,40 +77,6 @@ namespace Assets.Scripts
             RotationSpeed = 10f;
 
             Accuracy = 1;
-        }
-
-        // Use this for initialization
-        void Start ()
-        {
-            setVariables();
-
-            CosmoRigidbody = GetComponent<Rigidbody2D>();
-            cosmoTransform = GetComponent<Transform>();
-        }
-
-        void FixedUpdate() {
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            Vector2 movement = new Vector2(moveHorizontal, moveVertical);
-
-            if(MovementSpeed < MaxSpeed)
-                CosmoRigidbody.AddForce(movement * MovementSpeed);
-
-            rotareToMouse();
-        }
-
-        void rotareToMouse()
-        {
-            Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            rotation = Quaternion.Slerp(transform.rotation, rotation, RotationSpeed * Time.deltaTime);
-
-            transform.rotation = rotation;
         }
     }
 }

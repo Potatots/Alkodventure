@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class Bullets : MonoBehaviour
 {
-    private int bulletSpeed = 200;
+    private int bulletSpeed = 75;
+    public int bulletForce = 10;
 
-	// Use this for initialization
-	void Start () {
+    void OnTriggerEnter(Collider collider)
+    {
+        
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
