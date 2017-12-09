@@ -331,11 +331,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wall: {fileID: 1432375174545734, guid: 22929cf58ebb460478a263cc10ac2ae9, type: 2}
+  bottle: {fileID: 1220138383598114, guid: 1abb0523746192b499b294babe825adb, type: 2}
   floors:
   - {fileID: 1441397789078340, guid: 6cc716bc4ad1a804a9424ece38d70c68, type: 2}
   - {fileID: 1409469925266064, guid: eb0d62022a4f9854983fc7d5f3855aeb, type: 2}
   - {fileID: 1497392166962378, guid: b70c8a7ab3112bf47b1ebfb929602382, type: 2}
   - {fileID: 1214980964974304, guid: 9f1c4db233a4b0047bc1b369ea9f90f1, type: 2}
-  width: 100
-  height: 100
-  tileSize: 5
+  width: 10
+  height: 10
+  bottleFactor: 10
